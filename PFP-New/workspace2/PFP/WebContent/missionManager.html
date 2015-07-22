@@ -1,0 +1,64 @@
+<header>
+	<div class="container">
+		<div class="heading">Plug Fest Plus</div>
+	</div>
+	<div align="center">Mission Manager is logged in..</div>
+	<div>
+		<h3 align="right">
+			<a href ng-click="logout()">Logout</a>
+		</h3>
+	</div>
+</header>
+
+<section>
+	<h2 align="center">Please launch the redact editor to select the
+		fields which you want to redact and which you want to allow for your
+		country of selection and save the file. After this click on Launch
+		Redaction Service for the redaction to take place on the ntf file. Now
+		you can launch the Socket GXP to view the redacted ntf file under the
+		template you choose</h2>
+	<h3 align="center">
+		<a class="launch" href ng-click="openSocket()">Launch Socket GXP |</a>
+		Enter the NTF file path along with the file name: <input type="text"
+			ng-model="path" required="required"> Classification: <select
+			ng-model="c" required="required" autofocus>
+			<option value="U">U</option>
+			<option value="R">R</option>
+			<option value="C">C</option>
+			<option value="S">S</option>
+			<option value="T">T</option>
+		</select> Releasability: <input type="text" ng-model="r" required="required">
+		Sensor:<input type="text" ng-model="s" required="required"><a
+			class="launch" href ng-click="openRedact()">| Launch Redaction
+			Service |</a> <a class="launch" href ng-click="openRedactEditor()">|
+			Launch Redact Editor</a>
+	</h3>
+	<table style="width: 100%">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Template Country</th>
+				<th>Template Platform</th>
+				<th>Template Sensor</th>
+				<th>Comments on business rules</th>
+				<th>Status</th>
+				<th>File</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="template in templates | filter: search">
+				<td>{{template.templateId}}</td>
+				<td>{{template.templateCountry}}</td>
+				<td>{{template.rules}}</td>
+				<td>{{template.sensor}}</td>
+				<td>{{template.comments}}</td>
+				<td>{{template.status}}</td>
+				<td><input type="file" fileread="vm.uploadme"
+					required="required" autofocus name="templateFile"></td>
+				<td><button type="submit"
+						ng-click="submitFile(template.templateId, template.templateCountry, template.rules, template.sensor, template.comments, template.status)">Submit</button></td>
+			</tr>
+		</tbody>
+	</table>
+</section>

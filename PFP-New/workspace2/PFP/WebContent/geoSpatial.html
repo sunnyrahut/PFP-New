@@ -1,0 +1,82 @@
+<header>
+	<div class="container">
+		<div class="heading">Plug Fest Plus</div>
+	</div>
+	<div align="center">Geo Spatial Analyst is logged in..</div>
+	<div>
+		<h3 align="right">
+			<a href ng-click="logout()">Logout</a>
+		</h3>
+	</div>
+</header>
+
+<section>
+	<h3 align="center">
+		<a class="launch" href ng-click="openSocket()">Launch Socket GXP</a>
+	</h3>
+	<table style="width: 100%">
+		<thead>
+			<tr>
+				<th>Template Country</th>
+				<th>Template Platform</th>
+				<th>Template Sensor</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><select ng-model="templateCountry" required="required"
+					autofocus>
+						<option value="Iraq">Iraq</option>
+						<option value="Libya">Libya</option>
+				</select></td>
+				<td><select ng-model="templatePlatform" required="required"
+					autofocus>
+						<option value="MQ-1-9">MQ/1/9</option>
+						<option value="U-2">U-2</option>
+						<option value="GH">GH</option>
+						<option value="Navy Triton BAM-D">Navy Triton BAM-D</option>
+						<option value="AIP">AIP</option>
+						<option value="AIMS">AIMS</option>
+						<option value="F-18">F-18</option>
+						<option value="F-16">F-16</option>
+						<option value="A-10">A-10</option>
+						<option value="GH">GH</option>
+				</select></td>
+				<td><select ng-model="templateSensor" required="required"
+					autofocus>
+						<option value="EO">EO</option>
+						<option value="IR">IR</option>
+						<option value="SAR">SAR</option>
+				</select></td>
+				<td><button ng-click="getFile()">Get template data</button></td>
+			</tr>
+			<tr>
+				<td>{{template.templateCountry}}</td>
+				<td>{{template.rules}}</td>
+				<td>{{template.sensor}}</td>
+				<td><a href="{{template.templateFile}}" download="template.xml">{{download}}</a></td>
+				<td><input type="file" ng-model="file" fileread="vm.uploadme"></td>
+				<td><button ng-click="updateFile(template)">Update and
+						send Template</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 align="center">Rejected and pending for update templates</h2>
+	<table style="width: 100%">
+		<thead>
+			<tr>
+				<th>Template ID</th>
+				<th>Template File</th>
+				<th>Updated file</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="request in requests | filter: search">
+				<td>{{request.templateId}}</td>
+				<td><a href="{{template.templateFile}}" download="template.xml">{{downloadFile}}</a></td>
+				<td><input type="file" ng-model="file" fileread="vm.uploadme"></td>
+				<td><button type="submit" ng-click="updateFile(request)">Submit</button></td>
+			</tr>
+		</thead>
+	</table>
+</section>

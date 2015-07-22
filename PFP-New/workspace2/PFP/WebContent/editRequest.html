@@ -1,0 +1,52 @@
+<header>
+	<div class="container">
+		<div class="heading">Plug Fest Plus</div>
+	</div>
+	<div align="center">FDO is logged in..</div>
+</header>
+
+<section>
+	<table style="width: 100%">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Template Country</th>
+				<th>Template Platform</th>
+				<th>Template Sensor</th>
+				<th>Comments on business rules</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{id}}</td>
+				<td><select ng-model="country" required="required" autofocus>
+						<option value="Iraq">Iraq</option>
+						<option value="Libya">Libya</option>
+				</select></td>
+				<td><select ng-model="rules" required="required" autofocus>
+						<option value="MQ-1-9">MQ/1/9</option>
+						<option value="U-2">U-2</option>
+						<option value="GH">GH</option>
+						<option value="Navy Triton BAM-D">Navy Triton BAM-D</option>
+						<option value="AIP">AIP</option>
+						<option value="AIMS">AIMS</option>
+						<option value="F-18">F-18</option>
+						<option value="F-16">F-16</option>
+						<option value="A-10">A-10</option>
+						<option value="GH">GH</option>
+				</select></td>
+				<td><select ng-model="sensor" required="required" autofocus>
+						<option value="EO">EO</option>
+						<option value="IR">IR</option>
+						<option value="SAR">SAR</option>
+				</select></td>
+				<td><input type="text" ng-model="comments" name="comment"
+					required="required"></td>
+				<td>{{status}}</td>
+				<td><button type="submit" ng-click="updateRequest()">Update</button></td>
+			</tr>
+		</tbody>
+	</table>
+</section>

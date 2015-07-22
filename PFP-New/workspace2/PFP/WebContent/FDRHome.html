@@ -1,0 +1,49 @@
+<header>
+	<div class="container">
+		<div class="heading">Plug Fest Plus</div>
+	</div>
+	<div align="center">FDR is logged in..</div>
+	<div>
+		<h3 align="right">
+			<a href ng-click="logout()">Logout</a>
+		</h3>
+	</div>
+</header>
+
+<section>
+	<h3 align="center">
+		<a class="launch" href ng-click="openSocket()">Launch Socket GXP</a>
+	</h3>
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Template Country</th>
+				<th>Template Platform</th>
+				<th>Template Sensor</th>
+				<th>Comments on business rules</th>
+				<th>Status</th>
+				<th>File</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="8"><h3>------------------Requests with files
+						uploaded by the mission manager--------------------</h3></td>
+			</tr>
+			<tr ng-repeat="request in requests | filter: search">
+				<td>{{request.templateId}}</td>
+				<td>{{request.templateCountry}}</td>
+				<td>{{request.rules}}</td>
+				<td>{{request.sensor}}</td>
+				<td>{{request.comments}}</td>
+				<td>{{request.status}}</td>
+				<td><a href="{{request.templateFile}}"
+					/download="template.tmpl">Template File</a></td>
+				<td><button type="submit" ng-click="acceptRequest(request)">Accept</button>
+					<button type="submit" ng-click="rejectRequest(request)">Reject</button></td>
+			</tr>
+		</tbody>
+	</table>
+</section>

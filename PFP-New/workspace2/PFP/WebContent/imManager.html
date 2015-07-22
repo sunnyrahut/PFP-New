@@ -1,0 +1,35 @@
+<header>
+	<div class="container">
+		<div class="heading">Plug Fest Plus</div>
+	</div>
+	<div align="center">Imagery Mission Manager is logged in..</div>
+	<div>
+		<h3 align="right">
+			<a href ng-click="logout()">Logout</a>
+		</h3>
+	</div>
+</header>
+
+<section>
+	<h3 align="center">
+		<a class="launch" href ng-click="openSocket()">Launch Socket GXP</a>
+	</h3>
+	<h1 align="center">Queued templates</h1>
+	<table style="width: 100%">
+		<thead>
+			<tr>
+				<th>Template ID</th>
+				<th>Template File</th>
+				<th>Status</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="request in requests | filter: search">
+				<td>{{request.templateId}}</td>
+				<td><a href="{{request.templateFile}}" download="template.xml">{{downloadFile}}</a></td>
+				<td>{{request.status}}</td>
+				<td><button type="submit" ng-click="accept(request)">Accept</button>
+					<button type="submit" ng-click="reject(request)">Reject</button></td>
+			</tr>
+		</thead>
+	</table>
+</section>
